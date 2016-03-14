@@ -13,5 +13,5 @@ composer install
 
 ## Run
 ```bash
-./vendor/bin/phpunit tests
+./vendor/bin/phpunit
 ```
