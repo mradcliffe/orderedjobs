@@ -1,0 +1,20 @@
+{
+  "name": "columbusphp/orderedjobs",
+  "description": "Ordered Jobs code kata",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matthew Radcliffe",
+      "email": "mradcliffe@softpixel.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ColumbusPHP\\OrderedJobs\\": "src/"
+    }
+  },
+  "require": {
+    "phpunit/phpunit": "5.2.10"
+  }
+}
