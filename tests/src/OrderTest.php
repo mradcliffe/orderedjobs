@@ -1,5 +1,7 @@
 <?php
 
+namespace ColumbusPHP\Tests\OrderedJobs;
+
 use ColumbusPHP\OrderedJobs\Order;
 
 /**
@@ -8,7 +10,7 @@ use ColumbusPHP\OrderedJobs\Order;
  * @coversDefaultClass ColumbusPHP\OrderedJobs\Order
  * @group orderedjobs
  */
-class OrderTest extends PHPUnit_Framework_TestCase {
+class OrderTest extends \PHPUnit_Framework_TestCase {
 
 
   /**

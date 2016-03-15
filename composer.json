@@ -11,10 +11,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "ColumbusPHP\\OrderedJobs\\": "src/"
+      "ColumbusPHP\\OrderedJobs\\": "src/",
+      "ColumbusPHP\\Tests\\OrderedJobs\\": "tests/src/"
     }
   },
   "require": {
-    "phpunit/phpunit": "5.2.10"
+    "phpunit/phpunit": "~4.8"
   }
 }
