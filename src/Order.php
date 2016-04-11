@@ -48,7 +48,7 @@ class Order {
         if ($match[1] === $match[2]) {
           throw new SelfReferenceException('A job cannot depend on itself.');
         }
-        $jobs[$match[1]] = $match[2];
+        $jobs[$match[1]] = isset($match[2]) ? $match[2] : '';
       }
     }
 
@@ -88,10 +88,10 @@ class Order {
     }
 
     // Jobs without dependencies are weighted lower.
-    if (!$this->jobs[$a] && isset($this->jobs[$b])) {
+    if (!$this->jobs[$a] && $this->jobs[$b]) {
       return 1;
     }
-    elseif (!$this->jobs[$b] && isset($this->jobs[$a])) {
+    elseif (!$this->jobs[$b] && $this->jobs[$a]) {
       return -1;
     }
 
@@ -107,7 +107,7 @@ class Order {
    * @return boolean
    */
   protected function isDependencyOf($a, $b) {
-    return isset($this->jobs[$b]) ? strpos($this->jobs[$b], $a) : FALSE;
+    return $this->jobs[$b] ? strpos($this->jobs[$b], $a) : FALSE;
   }
 
   /**
