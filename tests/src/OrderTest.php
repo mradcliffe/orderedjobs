@@ -63,9 +63,9 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
       ['', ''],
       ['a =>', 'a'],
       ["a =>\nb =>\nc =>", 'abc'],
-      ["a =>\nb => c\nc =>", 'cba'],
+      ["a =>\nb => c\nc =>", 'acb'],
       ["a => c\nb => a\nc =>", 'cab'],
-      ["a =>\nb => c\nc => f\nd => a\ne => b\nf =>", 'fcbade']
+      ["a =>\nb => c\nc => f\nd => a\ne => b\nf =>", 'afcbde']
     ];
   }
 }
