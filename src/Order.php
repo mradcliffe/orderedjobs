@@ -41,13 +41,14 @@ class Order {
    */
   protected function parseJobs($value) {
     $jobs = [];
+    $matches = [];
 
     if (preg_match_all('/^([a-z])\s=>\s?([a-z]?)$/m', $value, $matches, PREG_SET_ORDER)) {
       foreach ($matches as $match) {
-        if ($match[1] == $match[2]) {
+        if ($match[1] === $match[2]) {
           throw new SelfReferenceException('A job cannot depend on itself.');
         }
-        $jobs[$match[1]] = $match[2];
+        $jobs[$match[1]] = isset($match[2]) ? $match[2] : '';
       }
     }
 
