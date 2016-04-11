@@ -86,8 +86,16 @@ class Order {
       return 1;
     }
 
+    // Jobs without dependencies are weighted lower.
+    if (!$this->jobs[$a] && $this->jobs[$b]) {
+      return -1;
+    }
+    elseif (!$this->jobs[$b] && $this->jobs[$a]) {
+      return 1;
+    }
+
     // Otherwise do a string comparison of  the job names.
-    return strcmp($a, $b);
+    return strcasecmp($a, $b);
   }
 
   /**

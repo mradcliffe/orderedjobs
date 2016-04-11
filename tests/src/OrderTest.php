@@ -17,8 +17,8 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
    * Assert that for a given sequence of jobs the output is ordered by
    * dependencies.
    *
-   * @param array $jobs
-   *   An array of jobs.
+   * @param string $jobs
+   *   A set of jobs.
    * @param string $sequence
    *   The expected sequence of jobs.
    * @dataProvider jobsProvider
