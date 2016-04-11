@@ -88,16 +88,10 @@ class Order {
     }
 
     // Jobs without dependencies are weighted lower.
-    if (!isset($this->jobs['c'])) {
-      var_dump($this->jobs);
-    }
-    if (!isset($this->jobs['b'])) {
-      var_dump($this->jobs);
-    }
-    if (!isset($this->jobs[$a]) && isset($this->jobs[$b])) {
+    if (!$this->jobs[$a] && isset($this->jobs[$b])) {
       return 1;
     }
-    elseif (!isset($this->jobs[$b]) && isset($this->jobs[$a])) {
+    elseif (!$this->jobs[$b] && isset($this->jobs[$a])) {
       return -1;
     }
 

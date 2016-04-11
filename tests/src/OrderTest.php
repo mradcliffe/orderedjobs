@@ -19,15 +19,30 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
    *
    * @param string $jobs
    *   A set of jobs.
-   * @param string $sequence
-   *   The expected sequence of jobs.
+   * @param integer $position
    * @dataProvider jobsProvider
    */
-  public function testOrder($jobs, $sequence) {
+  public function testOrder($jobs, $position) {
 
     $order = new Order($jobs);
 
-    $this->assertEquals($sequence, $order->getSequence());
+    $this->assertGreaterThan($position, strpos($order->getSequence(), 'b'));
+  }
+
+  /**
+   * Assert that an empty set of jobs and 1 job return appropriately.
+   */
+  public function testEmptyOrder() {
+    $order = new Order('');
+    $this->assertEquals('', $order->getSequence());
+  }
+
+  /**
+   * Assert that a set of 1 job returns that 1 job.
+   */
+  public function testOneJob() {
+    $order = new Order('a => ');
+    $this->assertEquals('a', $order->getSequence());
   }
 
   /**
@@ -60,12 +75,10 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
    */
   public function jobsProvider() {
     return [
-      ['', ''],
-      ['a =>', 'a'],
-      ["a =>\nb =>\nc =>", 'abc'],
-      ["a =>\nb => c\nc =>", 'acb'],
-      ["a => c\nb => a\nc =>", 'cab'],
-      ["a =>\nb => c\nc => f\nd => a\ne => b\nf =>", 'afcbde']
+      ["a =>\nb =>\nc =>", 0],
+      ["a =>\nb => c\nc =>", 0],
+      ["a => c\nb => a\nc =>", 1],
+      ["a =>\nb => c\nc => f\nd => a\ne => b\nf =>", 1]
     ];
   }
 }
