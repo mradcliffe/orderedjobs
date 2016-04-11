@@ -107,7 +107,7 @@ class Order {
    * @return boolean
    */
   protected function isDependencyOf($a, $b) {
-    return $this->jobs[$b] ? strpos($this->jobs[$b], $a) : FALSE;
+    return isset($this->jobs[$b]) ? strpos($this->jobs[$b], $a) : FALSE;
   }
 
   /**
